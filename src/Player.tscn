@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sprites/Ent_small.png" type="Texture" id=1]
-[ext_resource path="res://src/Actor/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/aim.png" type="Texture" id=3]
 [ext_resource path="res://Aim sprite.gd" type="Script" id=4]
+[ext_resource path="res://my_LD48_normal_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/Weapon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Weapon_PlasmaBeam.tscn" type="PackedScene" id=7]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -25,3 +28,21 @@ polygon = PoolVector2Array( -4.00526, -5.6962, -5.95904, -3.76528, -5.95904, 3.9
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 2.0
+margin_top = -18.0
+margin_right = 178.0
+margin_bottom = -3.0
+custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.545098 )
+text = "1231iolksdafsadfsdfsdfsdfsdfrgdr"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon23" parent="." instance=ExtResource( 6 )]
+
+[node name="Weapon" parent="." instance=ExtResource( 7 )]
