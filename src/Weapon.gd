@@ -1,24 +1,28 @@
 extends Node2D
 
+var COOLDOWN = 0.1
+var cooldownTimer = COOLDOWN
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (PackedScene) var Bullet
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	cooldownTimer += delta
 
-func shoot(aimDirection: Vector2):
-	print("Shoot base weapon")
+func shoot(aimDirection: Vector2, justPressed):
+	if reloadPercent() >= 1.0:
+		cooldownTimer = 0
+		weaponEffect(aimDirection)
+		
+func reloadPercent():
+	return min(cooldownTimer/COOLDOWN, 1.0)
+
+
+func weaponEffect(aimDirection: Vector2):
 	$SoundShoot.play()
-	
-func shoot_special(aimDirection: Vector2):
-	print("Shoot special base weapon")
-	$SoundShootSpecial.play()
-	
+	var b = Bullet.instance()
+	add_child(b)
+	b.transform.x = aimDirection

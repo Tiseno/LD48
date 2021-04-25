@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/symbols/vents.png" type="Texture" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=9]
+polygon = PoolVector2Array( -6.18753, -6.18753, 6.18753, -6.18753, 6.18753, 6.18753, -6.18753, 6.18753 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 6, 6 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 12, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 12, 0, 12, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 12, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 36, 0, 12, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 12, 24 )
+
+[sub_resource type="SpriteFrames" id=10]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=12]
+resource_name = "New Anim"
+length = 0.3
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 3, 2, 3, 4, 3, 4, 3, 4, 3, 2 ]
+}
+
+[node name="Vent" type="Node2D"]
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+occluder = SubResource( 9 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 3.03164e-13, 0 )
+shape = SubResource( 11 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -6 )
+frames = SubResource( 10 )
+frame = 4
+playing = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+playback_process_mode = 0
+"anims/New Anim" = SubResource( 12 )

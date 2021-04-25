@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/symbols/bitmap_black.bmp" type="Texture" id=1]
 [ext_resource path="res://assets/symbols/black_square.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 6 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -6.00002, -6.00002, 6.00002, -6.00002, 6.00002, 6.00002, -6.00002, 6.00002 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 6.00002, -6.75002, 6.00002, 6.00002, -6.75002, 6.00002 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,53 +23,13 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 12, 12 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Square"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Square/StaticBody2D"]
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
-[node name="Square_Big" type="Sprite" parent="."]
-position = Vector2( 32, -64 )
-scale = Vector2( 5.33333, 5.33333 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 12, 12 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Square_Big"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_Big/StaticBody2D"]
-position = Vector2( -1.90735e-06, 9.53674e-07 )
-shape = SubResource( 1 )
-
-[node name="Square_Bigger" type="Sprite" parent="."]
-position = Vector2( 64, -168 )
-scale = Vector2( 10.6667, 10.6667 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 12, 12 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Square_Bigger"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_Bigger/StaticBody2D"]
-position = Vector2( -1.90735e-06, 9.53674e-07 )
-shape = SubResource( 1 )
-
-[node name="Square_Biggest" type="Sprite" parent="."]
-position = Vector2( 128, -384 )
-scale = Vector2( 21.3333, 21.3333 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 12, 12 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Square_Biggest"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_Biggest/StaticBody2D"]
-position = Vector2( -1.90735e-06, 9.53674e-07 )
-shape = SubResource( 1 )
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Square"]
+occluder = SubResource( 2 )
 
 [node name="Triangle" type="Sprite" parent="."]
 position = Vector2( 32, -16 )
@@ -73,11 +39,12 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 12, 12 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Triangle"]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Triangle/StaticBody2D"]
-visible = false
 polygon = PoolVector2Array( 6, -6, 6, 6, -6, 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Triangle"]
+occluder = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8, 8 )
@@ -94,6 +61,9 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite"]
+occluder = SubResource( 2 )
+
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 32, 8 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -108,6 +78,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite2"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="."]
 position = Vector2( 56, 8 )
@@ -124,6 +98,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite3"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite4" type="Sprite" parent="."]
 position = Vector2( 80, 8 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -138,6 +116,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite4"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite5" type="Sprite" parent="."]
 position = Vector2( 8.00002, 32 )
@@ -154,6 +136,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite5"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite6" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -168,6 +154,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite6"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite7" type="Sprite" parent="."]
 position = Vector2( 56, 32 )
@@ -184,6 +174,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite7"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite8" type="Sprite" parent="."]
 position = Vector2( 80, 32 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -198,6 +192,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite8"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite9" type="Sprite" parent="."]
 position = Vector2( 8.00002, 56 )
@@ -214,6 +212,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite9"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite10" type="Sprite" parent="."]
 position = Vector2( 32, 56 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -228,6 +230,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite10"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite11" type="Sprite" parent="."]
 position = Vector2( 56, 56 )
@@ -244,6 +250,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite11"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite12" type="Sprite" parent="."]
 position = Vector2( 80, 56 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -258,6 +268,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite12"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite13" type="Sprite" parent="."]
 position = Vector2( 8.00002, 80 )
@@ -274,6 +288,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite13"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite14" type="Sprite" parent="."]
 position = Vector2( 32, 80 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -288,6 +306,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite14"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite15" type="Sprite" parent="."]
 position = Vector2( 56, 80 )
@@ -304,6 +326,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite15"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite16" type="Sprite" parent="."]
 position = Vector2( 80, 80 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -318,6 +344,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite16"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite17" type="Sprite" parent="."]
 position = Vector2( 8.00002, 104 )
@@ -334,6 +364,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite17"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite18" type="Sprite" parent="."]
 position = Vector2( 32, 104 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -348,6 +382,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite18"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite19" type="Sprite" parent="."]
 position = Vector2( 56, 104 )
@@ -364,6 +402,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite19"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite20" type="Sprite" parent="."]
 position = Vector2( 80, 104 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -378,6 +420,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite20"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite21" type="Sprite" parent="."]
 position = Vector2( 8.00002, 128 )
@@ -394,6 +440,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite21"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite22" type="Sprite" parent="."]
 position = Vector2( 32, 128 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -408,6 +458,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite22"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite23" type="Sprite" parent="."]
 position = Vector2( 56, 128 )
@@ -424,6 +478,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite23"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite24" type="Sprite" parent="."]
 position = Vector2( 80, 128 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -438,6 +496,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite24"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite25" type="Sprite" parent="."]
 position = Vector2( 8.00002, 152 )
@@ -454,6 +516,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite25"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite26" type="Sprite" parent="."]
 position = Vector2( 32, 152 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -468,6 +534,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite26"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite27" type="Sprite" parent="."]
 position = Vector2( 56, 152 )
@@ -484,6 +554,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite27"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite28" type="Sprite" parent="."]
 position = Vector2( 80, 152 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -498,6 +572,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite28"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite29" type="Sprite" parent="."]
 position = Vector2( 8.00002, 176 )
@@ -514,6 +592,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite29"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite30" type="Sprite" parent="."]
 position = Vector2( 32, 176 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -528,6 +610,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite30"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite31" type="Sprite" parent="."]
 position = Vector2( 56, 176 )
@@ -544,6 +630,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite31"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite32" type="Sprite" parent="."]
 position = Vector2( 80, 176 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -558,6 +648,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite32"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite33" type="Sprite" parent="."]
 position = Vector2( 8.00002, 200 )
@@ -574,6 +668,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite33"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite34" type="Sprite" parent="."]
 position = Vector2( 32, 200 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -588,6 +686,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite34"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite35" type="Sprite" parent="."]
 position = Vector2( 56, 200 )
@@ -604,6 +706,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite35"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite36" type="Sprite" parent="."]
 position = Vector2( 80, 200 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -618,6 +724,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite36"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite37" type="Sprite" parent="."]
 position = Vector2( 8.00002, 224 )
@@ -634,6 +744,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite37"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite38" type="Sprite" parent="."]
 position = Vector2( 32, 224 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -648,6 +762,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite38"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite39" type="Sprite" parent="."]
 position = Vector2( 56, 224 )
@@ -664,6 +782,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite39"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite40" type="Sprite" parent="."]
 position = Vector2( 80, 224 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -678,6 +800,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite40"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite41" type="Sprite" parent="."]
 position = Vector2( 8.00002, 248 )
@@ -694,6 +820,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite41"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite42" type="Sprite" parent="."]
 position = Vector2( 32, 248 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -708,6 +838,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite42"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite43" type="Sprite" parent="."]
 position = Vector2( 56, 248 )
@@ -724,6 +858,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite43"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite44" type="Sprite" parent="."]
 position = Vector2( 80, 248 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -738,6 +876,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite44"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite45" type="Sprite" parent="."]
 position = Vector2( 8, 272 )
@@ -754,6 +896,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite45"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite46" type="Sprite" parent="."]
 position = Vector2( 32, 272 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -768,6 +914,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite46"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite47" type="Sprite" parent="."]
 position = Vector2( 56, 272 )
@@ -784,6 +934,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite47"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite48" type="Sprite" parent="."]
 position = Vector2( 80, 272 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -798,6 +952,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite48"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite49" type="Sprite" parent="."]
 position = Vector2( 8.00002, 296 )
@@ -814,6 +972,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite49"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite50" type="Sprite" parent="."]
 position = Vector2( 32, 296 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -828,6 +990,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite50"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite51" type="Sprite" parent="."]
 position = Vector2( 56, 296 )
@@ -844,6 +1010,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite51"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite52" type="Sprite" parent="."]
 position = Vector2( 80, 296 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -858,6 +1028,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite52"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite53" type="Sprite" parent="."]
 position = Vector2( 8.00002, 320 )
@@ -874,6 +1048,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite53"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite54" type="Sprite" parent="."]
 position = Vector2( 32, 320 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -888,6 +1066,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite54"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite55" type="Sprite" parent="."]
 position = Vector2( 56, 320 )
@@ -904,6 +1086,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite55"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite56" type="Sprite" parent="."]
 position = Vector2( 80, 320 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -918,6 +1104,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite56"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite57" type="Sprite" parent="."]
 position = Vector2( 8.00002, 344 )
@@ -934,6 +1124,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite57"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite58" type="Sprite" parent="."]
 position = Vector2( 32, 344 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -948,6 +1142,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite58"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite59" type="Sprite" parent="."]
 position = Vector2( 56, 344 )
@@ -964,6 +1162,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite59"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite60" type="Sprite" parent="."]
 position = Vector2( 80, 344 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -978,6 +1180,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite60"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite61" type="Sprite" parent="."]
 position = Vector2( 8.00002, 368 )
@@ -994,6 +1200,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite61"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite62" type="Sprite" parent="."]
 position = Vector2( 32, 368 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1008,6 +1218,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite62"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite63" type="Sprite" parent="."]
 position = Vector2( 56, 368 )
@@ -1024,6 +1238,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite63"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite64" type="Sprite" parent="."]
 position = Vector2( 80, 368 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1037,6 +1255,10 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite64/StaticBody2D"]
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite64"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite65" type="Sprite" parent="."]
 position = Vector2( 8.00002, 392 )
@@ -1053,6 +1275,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite65"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite66" type="Sprite" parent="."]
 position = Vector2( 32, 392 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1068,14 +1294,9 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite66"]
-visible = false
-position = Vector2( 36, -18 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite66/StaticBody2D2"]
-visible = false
-position = Vector2( -1.90735e-06, 9.53674e-07 )
-shape = SubResource( 1 )
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite66"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite67" type="Sprite" parent="."]
 position = Vector2( 56, 392 )
@@ -1092,6 +1313,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite67"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite68" type="Sprite" parent="."]
 position = Vector2( 80, 392 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1106,6 +1331,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite68"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite69" type="Sprite" parent="."]
 position = Vector2( 8.00002, 416 )
@@ -1122,6 +1351,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite69"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite70" type="Sprite" parent="."]
 position = Vector2( 32, 416 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1136,6 +1369,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite70"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite71" type="Sprite" parent="."]
 position = Vector2( 56, 416 )
@@ -1152,6 +1389,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite71"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite72" type="Sprite" parent="."]
 position = Vector2( 80, 416 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1166,6 +1407,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite72"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite73" type="Sprite" parent="."]
 position = Vector2( 8.00002, 440 )
@@ -1182,6 +1427,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite73"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite74" type="Sprite" parent="."]
 position = Vector2( 32, 440 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1196,6 +1445,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite74"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite75" type="Sprite" parent="."]
 position = Vector2( 56, 440 )
@@ -1212,6 +1465,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite75"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite76" type="Sprite" parent="."]
 position = Vector2( 80, 440 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1226,6 +1483,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite76"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite77" type="Sprite" parent="."]
 position = Vector2( 8, 464 )
@@ -1242,6 +1503,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite77"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite78" type="Sprite" parent="."]
 position = Vector2( 32, 464 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1256,6 +1521,10 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite78"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
 
 [node name="Sprite79" type="Sprite" parent="."]
 position = Vector2( 56, 464 )
@@ -1272,6 +1541,10 @@ visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite79"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )
+
 [node name="Sprite80" type="Sprite" parent="."]
 position = Vector2( 80, 464 )
 scale = Vector2( 1.33333, 1.33333 )
@@ -1286,3 +1559,7 @@ visible = false
 visible = false
 position = Vector2( -1.90735e-06, 9.53674e-07 )
 shape = SubResource( 1 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite80"]
+scale = Vector2( 1.33333, 1.33333 )
+occluder = SubResource( 2 )

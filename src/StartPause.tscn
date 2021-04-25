@@ -1,0 +1,274 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://my_LD48_normal_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/StartPause.gd" type="Script" id=2]
+[ext_resource path="res://my_LD48_normal_font_big.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="StartPause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.219608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Center"]
+margin_left = 242.0
+margin_top = 26.0
+margin_right = 782.0
+margin_bottom = 573.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Center/VBoxContainer"]
+margin_right = 540.0
+margin_bottom = 547.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer"]
+margin_right = 540.0
+margin_bottom = 547.0
+custom_constants/separation = 41
+
+[node name="Title" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 540.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 3 )
+text = "Title: Deeper & Deeper"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 123.0
+margin_right = 540.0
+margin_bottom = 355.0
+custom_constants/separation = 213
+
+[node name="Action" type="VBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 232.0
+
+[node name="Move" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Action"]
+margin_right = 64.0
+margin_bottom = 55.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Move"
+align = 1
+uppercase = true
+
+[node name="Jump" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Action"]
+margin_top = 59.0
+margin_right = 64.0
+margin_bottom = 114.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Jump"
+align = 1
+uppercase = true
+
+[node name="Aim" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Action"]
+margin_top = 118.0
+margin_right = 48.0
+margin_bottom = 173.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Aim"
+align = 1
+uppercase = true
+
+[node name="Shoot" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Action"]
+margin_top = 177.0
+margin_right = 80.0
+margin_bottom = 232.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Shoot"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 293.0
+margin_right = 499.0
+margin_bottom = 232.0
+custom_constants/separation = 30
+
+[node name="Controller" type="VBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 232.0
+
+[node name="MoveD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Controller"]
+margin_right = 96.0
+margin_bottom = 55.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "LStick"
+align = 1
+uppercase = true
+
+[node name="JumpD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Controller"]
+margin_top = 59.0
+margin_right = 32.0
+margin_bottom = 114.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "LB"
+align = 1
+uppercase = true
+
+[node name="AimD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Controller"]
+margin_top = 118.0
+margin_right = 96.0
+margin_bottom = 173.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "RStick"
+align = 1
+uppercase = true
+
+[node name="ShootD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Controller"]
+margin_top = 177.0
+margin_right = 32.0
+margin_bottom = 232.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "RB"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseKeyboard" type="VBoxContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 126.0
+margin_right = 206.0
+margin_bottom = 232.0
+
+[node name="MoveD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/MouseKeyboard"]
+margin_right = 64.0
+margin_bottom = 55.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "WASD"
+align = 1
+uppercase = true
+
+[node name="JumpD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/MouseKeyboard"]
+margin_top = 59.0
+margin_right = 80.0
+margin_bottom = 114.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Space"
+align = 1
+uppercase = true
+
+[node name="AimD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/MouseKeyboard"]
+margin_top = 118.0
+margin_right = 80.0
+margin_bottom = 173.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Mouse"
+align = 1
+uppercase = true
+
+[node name="ShootD" type="Label" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/MouseKeyboard"]
+margin_top = 177.0
+margin_right = 32.0
+margin_bottom = 232.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "M1"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartContainer" type="CenterContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 540.0
+margin_bottom = 451.0
+
+[node name="Restart" type="Button" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/RestartContainer"]
+margin_left = 214.0
+margin_right = 326.0
+margin_bottom = 55.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "RESTART"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeContainer" type="CenterContainer" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 492.0
+margin_right = 540.0
+margin_bottom = 547.0
+
+[node name="Resume" type="Button" parent="MarginContainer/Center/VBoxContainer/HBoxContainer/VBoxContainer/ResumeContainer"]
+margin_left = 222.0
+margin_right = 318.0
+margin_bottom = 55.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "RESUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
