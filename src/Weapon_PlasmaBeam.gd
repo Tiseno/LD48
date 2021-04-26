@@ -10,3 +10,4 @@ func _ready():
 
 func weaponEffect(aimDirection: Vector2):
 	$SoundShoot.play()
+	get_tree().get_root().get_node("Game").victory()

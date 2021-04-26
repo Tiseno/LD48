@@ -8,14 +8,14 @@ var randomJumpTime = 0.0
 
 
 func _ready():
-	ACCELERATION = Vector2(1000.0, 1000.0)
-	ACCELERATION_MAX_X = 300.0
-	JUMP_POWER = 600.0
+	ACCELERATION = Vector2(2000.0, 1000.0)
+	ACCELERATION_MAX_X = 3900.0
+	JUMP_POWER = 1500.0
 	JUMP_DIMINISH_FACTOR = 0.92
 	JUMP_COOLDOWN = 0.3
 	JUMP_NO_JUMP_THRESHOLD = 450
 	randomJumpTime = 0.0 + randf()*1
-	hp = 5
+	hp = 20
 
 func chasePlayer(delta: float):
 	var playerDirection = player.get_global_position().direction_to(get_global_position())
@@ -57,7 +57,7 @@ func behavior(delta: float):
 	if target != null:
 		if attackTimer > 0.2:
 			attackTimer = 0.0
-			target.take_damage(3)
+			target.take_damage(10)
 	
 	if playerNearby():
 		ACCELERATION = Vector2(1000.0, 500.0)
@@ -71,6 +71,7 @@ func behavior(delta: float):
 		randomMovement(delta)
 
 func _on_PlayerDetector_body_entered(body):
+	print("Bog detected player", body.get_name())
 	player = body
 
 func _on_PlayerDetector_body_exited(body):

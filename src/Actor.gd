@@ -12,6 +12,7 @@ var JUMP_POWER = 600.0
 var JUMP_DIMINISH_FACTOR = 0.92
 var JUMP_COOLDOWN = 0.3
 var JUMP_NO_JUMP_THRESHOLD = 450
+var hp = 5
 
 var jumpTimer = 0.0
 
@@ -28,6 +29,22 @@ var wantToMoveRight = false
 var wantToShoot = false
 
 onready var _animated_sprite = $AnimatedSprite
+onready var _die_sound = $SoundDie
+
+var player = null
+var target = null
+
+func _ready():
+	connect("body_enter", self, "_body_entered")
+
+func _body_entered(body):
+	print(body.get_name())
+	if body.get_name() == "Player":
+		print("Detected player")
+		playerCollision(body)
+
+func playerCollision(body):
+	pass
 
 func weaponInput(delta: float):
 	if wantToShoot:
@@ -35,14 +52,20 @@ func weaponInput(delta: float):
 			$Weapon.shoot(aimDirection, false)
 
 func kill():
+	if dead:
+		return
 	dead = true
-	_animated_sprite.play("stand")
-	_animated_sprite.set_flip_v(true)
+	wantToMoveLeft = false
+	wantToMoveLeft = true
+	wantToJump = false
+	_animated_sprite.stop()
+	_animated_sprite.play("dead")
+	_die_sound.play()
 
 func applyFriction(delta):
 	if is_on_floor():
 		var deltaFriction = FRICTION * delta
-		if not wantToMoveLeft and not wantToMoveRight:
+		if dead or not wantToMoveLeft and not wantToMoveRight:
 			if(velocity.x > 0):
 				if(velocity.x - deltaFriction < 0):
 					velocity.x = 0
@@ -66,14 +89,14 @@ func applyFriction(delta):
 
 func move(delta):
 	var accelerationDirection = Vector2(0.0, 0.0)
-	if wantToMoveLeft and not wantToMoveRight:
+	if dead:
+		pass
+	elif wantToMoveLeft and not wantToMoveRight:
 		accelerationDirection = Vector2(-1.0, 0.0)
-		_animated_sprite.play("walk")
-		_animated_sprite.set_flip_h(false)
-	if not wantToMoveLeft and wantToMoveRight:
+	elif not wantToMoveLeft and wantToMoveRight:
 		accelerationDirection = Vector2(1.0, 0.0)
-		_animated_sprite.play("walk")
-		_animated_sprite.set_flip_h(true)
+	elif not wantToMoveLeft and not wantToMoveRight:
+		accelerationDirection = Vector2(0.0, 0.0)
 		
 	var currentAcceleration = ACCELERATION
 	if not is_on_floor():
@@ -117,12 +140,29 @@ func performJump(delta):
 
 
 func playerNearby():
-	pass
+	return player != null
 
 func behavior(delta: float):
 	pass
 
+func animate():
+	if dead:
+		_animated_sprite.play("dead")
+	elif not is_on_floor():
+		_animated_sprite.play("jump")
+	elif wantToMoveLeft and not wantToMoveRight:
+		_animated_sprite.play("walk")
+		_animated_sprite.set_flip_h(false)
+	elif not wantToMoveLeft and wantToMoveRight:
+		_animated_sprite.play("walk")
+		_animated_sprite.set_flip_h(true)
+	elif not wantToMoveLeft and not wantToMoveRight:
+		_animated_sprite.play("stand")
+		
 func _physics_process(delta: float) -> void:
+	if not dead and hp < 0.0:
+		kill()
+
 	applyFriction(delta)
 	
 	if not dead:
@@ -133,3 +173,8 @@ func _physics_process(delta: float) -> void:
 		
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
+	animate()
+
+func take_damage(amount):
+	hp = hp - amount
+	print(name, " took ", amount, " damage")

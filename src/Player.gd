@@ -12,6 +12,8 @@ var JUMP_POWER = 800.0
 var JUMP_DIMINISH_FACTOR = 0.92
 var JUMP_COOLDOWN = 0.3
 var JUMP_NO_JUMP_THRESHOLD = 450
+var HP_MAX = 40
+var hp = HP_MAX
 
 var jumpTimer = 0.0
 
@@ -55,6 +57,8 @@ func weaponInput(delta: float):
 
 
 func kill():
+	if dead:
+		return
 	get_parent().game_over()
 	dead = true
 
@@ -133,6 +137,9 @@ func performJump(delta):
 
 
 func _physics_process(delta: float) -> void:
+	if not dead and hp < 0.0:
+		kill()
+		
 	applyFriction(delta)
 	if not dead:
 		weaponInput(delta)
@@ -140,3 +147,17 @@ func _physics_process(delta: float) -> void:
 		velocity = performJump(delta)
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func take_damage(amount):
+	if dead:
+		return
+	hp = hp - amount
+	print(name, " took ", amount, " damage", hp)
+	if amount > 0 and amount < 5:
+		$DamageSmall.play()
+	elif amount >= 5 and amount < 10:
+		$DamageMedium.play()
+	elif amount >= 10:
+		$DamageBig.play()
+	if hp < 0.0:
+		kill()

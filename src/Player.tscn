@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprites/Ent_small.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/aim.png" type="Texture" id=3]
-[ext_resource path="res://Aim sprite.gd" type="Script" id=4]
 [ext_resource path="res://my_LD48_normal_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/Weapon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Weapon_PlasmaBeam.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/light.png" type="Texture" id=9]
+[ext_resource path="res://assets/sounds/damage_big.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/damage_small.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/damage_medium.wav" type="AudioStream" id=12]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -17,15 +19,14 @@ script = ExtResource( 2 )
 [node name="Aim" type="Sprite" parent="."]
 scale = Vector2( 0.576493, 0.576493 )
 texture = ExtResource( 3 )
-script = ExtResource( 4 )
 
 [node name="Player sprite" type="Sprite" parent="."]
 light_mask = 0
 texture = ExtResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="Player sprite"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 9 )
+color = Color( 1, 1, 1, 0 )
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 
@@ -56,3 +57,13 @@ __meta__ = {
 Bullet = ExtResource( 8 )
 
 [node name="Weapon2" parent="." instance=ExtResource( 7 )]
+
+[node name="DamageSmall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+attenuation = 0.0883883
+
+[node name="DamageMedium" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="DamageBig" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
