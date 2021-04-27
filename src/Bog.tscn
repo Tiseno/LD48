@@ -53,7 +53,7 @@ extents = Vector2( 168.637, 85.9526 )
 [node name="Bog" type="KinematicBody2D"]
 scale = Vector2( 10, 10 )
 collision_layer = 2
-collision_mask = 8
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -61,8 +61,7 @@ frames = SubResource( 6 )
 animation = "jump"
 playing = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2( 1, 1 )
+[node name="Collision" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -3.80312, -4.80168, -2.82096, -5.83996, 1.92144, -5.89608, 3.85768, -3.87565, 4.8679, -1.77104, 5.03627, 2.85912, 5.82199, 3.08361, 5.85006, 4.85149, 5.00821, 5.97395, -5.00976, 5.91783, -5.12201, 3.08361, -5.87967, 2.9433, -5.85161, -3.08993 )
 
 [node name="MeleeAttack" type="Area2D" parent="."]

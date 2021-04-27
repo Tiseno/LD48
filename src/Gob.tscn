@@ -58,7 +58,7 @@ extents = Vector2( 168.637, 39.4802 )
 
 [node name="Gob" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -66,7 +66,7 @@ frames = SubResource( 10 )
 animation = "jump"
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.125, 1.1875 )
 shape = SubResource( 8 )

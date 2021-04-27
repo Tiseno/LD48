@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/sounds/damage_medium.wav" type="AudioStream" id=12]
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 10
+collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

@@ -53,6 +53,13 @@ func weaponInput(delta: float):
 			$Weapon.shoot(aimDirection, false)
 
 func kill():
+	print(get_collision_mask_bit(0))
+	print(get_collision_mask_bit(1))
+	set_collision_mask_bit(0, false)
+	set_collision_mask_bit(1, false)
+	print(get_collision_mask_bit(0))
+	print(get_collision_mask_bit(1))
+
 	if dead:
 		return
 	dead = true

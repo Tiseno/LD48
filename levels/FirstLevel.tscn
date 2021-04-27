@@ -150,7 +150,7 @@ position = Vector2( 1625.59, 5990.5 )
 scale = Vector2( 20, 20 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -567.162, 5876.96 )
+position = Vector2( 791.931, -1112.22 )
 
 [node name="SoundVictory" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2( 1, 1 )
