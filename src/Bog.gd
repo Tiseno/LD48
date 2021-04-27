@@ -8,8 +8,8 @@ var randomJumpTime = 0.0
 
 
 func _ready():
-	ACCELERATION = Vector2(2000.0, 1000.0)
-	ACCELERATION_MAX_X = 3900.0
+	ACCELERATION = Vector2(2000.0, 4000.0)
+	ACCELERATION_MAX_X = 10000.0
 	JUMP_POWER = 1500.0
 	JUMP_DIMINISH_FACTOR = 0.92
 	JUMP_COOLDOWN = 0.3
@@ -20,6 +20,11 @@ func _ready():
 func chasePlayer(delta: float):
 	var playerDirection = player.get_global_position().direction_to(get_global_position())
 	wantToJump = true
+	moveDirection = playerDirection
+	var xdistance = abs(player.get_global_position().x - get_global_position().x)
+	if xdistance < 300.0:
+		wantToJump = false
+		
 	if playerDirection.x > 0.0:
 		wantToMoveLeft = true
 		wantToMoveRight = false

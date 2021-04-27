@@ -24,6 +24,8 @@ var aimDirection = Vector2(1.0, 0.0)
 
 var dead = false
 
+func _ready():
+	setHpText()
 
 func _input(event):
 	if dead:
@@ -148,6 +150,10 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
+func full_health():
+	hp = 40.0
+	setHpText()
+
 func take_damage(amount):
 	if dead:
 		return
@@ -159,5 +165,15 @@ func take_damage(amount):
 		$DamageMedium.play()
 	elif amount >= 10:
 		$DamageBig.play()
+	setHpText()
 	if hp < 0.0:
 		kill()
+
+func setHpText():
+	if hp > 30:
+		$HPText.add_color_override("font_color", Color(0,1,0,1))
+	elif hp > 20:
+		$HPText.add_color_override("font_color", Color(1,1,0,1))
+	else:
+		$HPText.add_color_override("font_color", Color(1,0,0,1))
+	$HPText.set_text(String(hp))

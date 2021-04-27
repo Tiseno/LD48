@@ -48,7 +48,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 168.637, 39.4802 )
+extents = Vector2( 168.637, 85.9526 )
 
 [node name="Bog" type="KinematicBody2D"]
 scale = Vector2( 10, 10 )
@@ -72,11 +72,9 @@ collision_layer = 0
 polygon = PoolVector2Array( -5.59906, -4.29658, -2.98933, -6.45731, 2.28624, -6.37313, 5.51332, -1.93941, 6.52353, 3.50453, 5.17658, 6.19844, -5.40263, 6.28263, -6.32866, 2.85912, -6.4409, -3.51085 )
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-visible = false
 position = Vector2( 0.786926, -6.61456 )
 shape = SubResource( 9 )
 

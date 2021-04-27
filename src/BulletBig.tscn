@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/bubble.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+var speed = 350
+
+func _physics_process(delta):
+	position += transform.x * speed * delta
+
+func _on_Bullet_body_entered(body):
+	if body.has_method(\"take_damage\") and not body.dead:
+		body.take_damage(5.0)
+	if \"dead\" in body and body.dead:
+		pass
+	else:
+		queue_free()
+		hide()
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1.34001, 1.29123 )
+
+[node name="BulletBig" type="Area2D"]
+collision_layer = 16
+collision_mask = 10
+script = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.24472, 0.24472 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

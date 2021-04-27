@@ -20,6 +20,7 @@ func _ready():
 func chasePlayer(delta: float):
 	var playerDirection = player.get_global_position().direction_to(get_global_position())
 	wantToJump = true
+	moveDirection = playerDirection
 	if playerDirection.x > 0.0:
 		wantToMoveLeft = true
 		wantToMoveRight = false

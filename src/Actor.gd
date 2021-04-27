@@ -27,6 +27,7 @@ var wantToJump = false
 var wantToMoveLeft = false
 var wantToMoveRight = false
 var wantToShoot = false
+var moveDirection = Vector2(0.0, 0.0)
 
 onready var _animated_sprite = $AnimatedSprite
 onready var _die_sound = $SoundDie
@@ -97,6 +98,8 @@ func move(delta):
 		accelerationDirection = Vector2(1.0, 0.0)
 	elif not wantToMoveLeft and not wantToMoveRight:
 		accelerationDirection = Vector2(0.0, 0.0)
+	elif moveDirection != Vector2(0.0, 0.0):
+		accelerationDirection = moveDirection
 		
 	var currentAcceleration = ACCELERATION
 	if not is_on_floor():

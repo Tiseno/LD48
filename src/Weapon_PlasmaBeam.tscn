@@ -1,10 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/sounds/plasma_beam.wav" type="AudioStream" id=1]
-[ext_resource path="res://src/Weapon_PlasmaBeam.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+var COOLDOWN = 0.1
+var cooldownTimer = COOLDOWN
+
+export (PackedScene) var BulletBig
+
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	cooldownTimer += delta
+
+func shoot(aimDirection: Vector2, justPressed):
+	if reloadPercent() >= 1.0:
+		cooldownTimer = 0
+		weaponEffect(aimDirection)
+		
+func reloadPercent():
+	return min(cooldownTimer/COOLDOWN, 1.0)
+
+
+func weaponEffect(aimDirection: Vector2):
+	$SoundShoot.play()
+	var b = BulletBig.instance()
+	add_child(b)
+	b.transform.x = aimDirection
+"
+
+[sub_resource type="PackedScene" id=1]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray(  ),
+"node_count": 0,
+"node_paths": [  ],
+"nodes": PoolIntArray(  ),
+"variants": [  ],
+"version": 2
+}
 
 [node name="Weapon_PlasmaBeam" type="Node2D"]
-script = ExtResource( 2 )
+script = SubResource( 2 )
+BulletBig = SubResource( 1 )
 
 [node name="SoundShoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )

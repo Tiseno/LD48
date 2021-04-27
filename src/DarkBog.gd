@@ -15,11 +15,13 @@ func _ready():
 	JUMP_COOLDOWN = 0.3
 	JUMP_NO_JUMP_THRESHOLD = 450
 	randomJumpTime = 0.0 + randf()*1
-	hp = 1 #00
+	hp = 100
 
 func chasePlayer(delta: float):
 	var playerDirection = player.get_global_position().direction_to(get_global_position())
 	wantToJump = true
+	moveDirection = playerDirection
+
 	if playerDirection.x > 0.0:
 		wantToMoveLeft = true
 		wantToMoveRight = false

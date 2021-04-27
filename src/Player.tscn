@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/sprites/Ent_small.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/aim.png" type="Texture" id=3]
+[ext_resource path="res://my_LD48_normal_font_small.tres" type="DynamicFont" id=4]
 [ext_resource path="res://my_LD48_normal_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/Weapon.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Weapon_PlasmaBeam.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/light.png" type="Texture" id=9]
 [ext_resource path="res://assets/sounds/damage_big.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sounds/damage_small.wav" type="AudioStream" id=11]
@@ -15,6 +14,20 @@
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
 script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -9.0
+margin_top = 1.5
+margin_right = 167.0
+margin_bottom = 16.5
+custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.545098 )
+text = "as34"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Aim" type="Sprite" parent="."]
 scale = Vector2( 0.576493, 0.576493 )
@@ -39,25 +52,6 @@ polygon = PoolVector2Array( -4.00526, -5.6962, -5.95904, -3.76528, -5.95904, 3.9
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 2.0
-margin_top = -18.0
-margin_right = 178.0
-margin_bottom = -3.0
-custom_fonts/normal_font = ExtResource( 5 )
-custom_colors/default_color = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.545098 )
-text = "1231iolksdafsadfsdfsdfsdfsdfrgdr"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Weapon" parent="." instance=ExtResource( 6 )]
-Bullet = ExtResource( 8 )
-
-[node name="Weapon2" parent="." instance=ExtResource( 7 )]
-
 [node name="DamageSmall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 attenuation = 0.0883883
@@ -67,3 +61,18 @@ stream = ExtResource( 12 )
 
 [node name="DamageBig" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+
+[node name="Weapon" parent="." instance=ExtResource( 6 )]
+
+[node name="HPText" type="Label" parent="."]
+margin_left = -1.625
+margin_top = -1.0
+margin_right = 21.375
+margin_bottom = 13.0
+rect_scale = Vector2( 0.54386, 0.583333 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "40"
+__meta__ = {
+"_edit_use_anchors_": false
+}

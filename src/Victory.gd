@@ -16,9 +16,9 @@ func _restart_button_pressed():
 
 
 func _input(event):
+	if not visible:
+		return
 	if event.is_action_pressed("ui_back"):
-		if get_tree().paused or get_tree().victory:
-			get_tree().get_root().get_node("Game").restart()
+		get_tree().get_root().get_node("Game").restart()
 	if event.is_action_pressed("ui_cancel"):
-		if get_tree().paused or get_tree().victory:
-			get_tree().get_root().get_node("Game").back_victory()
+		get_tree().get_root().get_node("Game").victory_back()
