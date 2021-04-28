@@ -160,7 +160,8 @@ func take_damage(amount):
 	hp = hp - amount
 	print(name, " took ", amount, " damage", hp)
 	if amount > 0 and amount < 5:
-		$DamageSmall.play()
+		# $DamageSmall.play()
+		$DamageMedium.play()
 	elif amount >= 5 and amount < 10:
 		$DamageMedium.play()
 	elif amount >= 10:

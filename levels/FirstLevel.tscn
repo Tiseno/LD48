@@ -153,7 +153,6 @@ scale = Vector2( 20, 20 )
 position = Vector2( 791.931, -1112.22 )
 
 [node name="SoundVictory" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2( 1, 1 )
 stream = ExtResource( 17 )
 volume_db = 2.0
 
